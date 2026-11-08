@@ -1,0 +1,54 @@
+{
+  "expo": {
+    "name": "Pills Tracker",
+    "slug": "pills-tracker",
+    "version": "0.1.0",
+    "orientation": "portrait",
+    "icon": "./assets/icon.png",
+    "userInterfaceStyle": "light",
+    "android": {
+      "package": "com.carlos.pillstracker",
+      "adaptiveIcon": {
+        "backgroundColor": "#E6F4FE",
+        "foregroundImage": "./assets/android-icon-foreground.png",
+        "backgroundImage": "./assets/android-icon-background.png",
+        "monochromeImage": "./assets/android-icon-monochrome.png"
+      },
+      "predictiveBackGestureEnabled": false,
+      "permissions": [
+        "android.permission.POST_NOTIFICATIONS",
+        "android.permission.SCHEDULE_EXACT_ALARM",
+        "android.permission.USE_EXACT_ALARM",
+        "android.permission.USE_FULL_SCREEN_INTENT",
+        "android.permission.RECEIVE_BOOT_COMPLETED",
+        "android.permission.WAKE_LOCK",
+        "android.permission.VIBRATE",
+        "android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"
+      ],
+      "versionCode": 23
+    },
+    "plugins": [
+      [
+        "expo-build-properties",
+        {
+          "android": {
+            "minSdkVersion": 31,
+            "extraProguardRules": "-keep class androidx.work.** { *; }\n-keep class * extends androidx.room.RoomDatabase { *; }\n-keep class app.notifee.** { *; }\n-keep class io.invertase.notifee.** { *; }"
+          }
+        }
+      ],
+      "./plugins/withAlarmAndSigning",
+      "expo-sqlite",
+      "expo-sharing",
+      "expo-router",
+      [
+        "expo-image-picker",
+        {
+          "photosPermission": "Pills Tracker usa tus fotos para mostrar la pastilla.",
+          "cameraPermission": "Pills Tracker usa la cámara para fotografiar la pastilla."
+        }
+      ]
+    ],
+    "scheme": "pillstracker"
+  }
+}
